@@ -29,7 +29,7 @@ with open(input_file) as file:
     # print(read)
     # TODO 1.) Check to make sure all the indentation in the input program is used correctly. If not, fix it. 
 
-    tabCheck = i = 0  # if val is 0 newline not expected. if val 1 it is
+    tabCheck = i = 0 # if val is 0 newline not expected. if val 1 it is
     statement_list = read
     number_of_spaces = 0
     stack = [0]
@@ -70,10 +70,9 @@ with open(input_file) as file:
         i += 1 #updates counter
 
     fixed_code = statement_list
-    print("Statement list: ", statement_list)
+    print(statement_list)
 
     # TODO 2.) Check to make sure all the function headers are syntactically correct. If not, fix it.
-
     # 3.) Count how many time the keyword “print” is used as keywords in the input program.
     str_file = str(read)
     print_1 = str_file.count("print(\"")
@@ -107,7 +106,6 @@ with open(input_file) as file:
         file1.write("# ORIGINAL CODE:\n")
         for line in file2:
             file1.write(line)
-            print(line)
         
         file1.write("\n\n# FIXED CODE: \n")
         for line in fixed_code:
