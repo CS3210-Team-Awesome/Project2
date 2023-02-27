@@ -24,7 +24,6 @@ print("You entered: " + input_file)
 
 with open(input_file) as file:
     print("Reading file...")
-    original_file = str(file)
     read = file.readlines()
 
     # print(read)
@@ -75,8 +74,6 @@ with open(input_file) as file:
 
     # TODO 2.) Check to make sure all the function headers are syntactically correct. If not, fix it.
 
-    fixed_code = "fixed code will go here"
-
     # 3.) Count how many time the keyword “print” is used as keywords in the input program.
     str_file = str(read)
     print_1 = str_file.count("print(\"")
@@ -99,21 +96,24 @@ with open(input_file) as file:
     print("Total number of 'print' statements: " + str(total_print_count))
     # 4.) Print to a text file the original input program, the updated input program, and the number of time keyword “print” is used.
 
-    updated_file = (
-        "# ORIGINAL CODE:\n" + original_file + 
-        "\n\n# FIXED CODE: \n" + fixed_code + 
-        "\n\n# Total number of 'print' statements: " + str(total_print_count))
-    
-    print("Original file: ", type(original_file))
-    print("Fixed code: ", type(fixed_code))
-
     """ This segment of code saves a .txt copy of the input file """
     name = str(input_file)
     txt_file = name[:-3]
     print(txt_file)
     txt_file = txt_file + '.txt'
 
-    with open(txt_file, "w") as file:
-        file.write(updated_file)
+    with open(txt_file, "w") as file1, open(input_file,'r') as file2:
+        # Writes the original code to the new txt file: 
+        file1.write("# ORIGINAL CODE:\n")
+        for line in file2:
+            file1.write(line)
+            print(line)
+        
+        file1.write("\n\n# FIXED CODE: \n")
+        for line in fixed_code:
+            file1.write(line)
+
+        file1.write("\n\n# Total number of 'print' statements: " + str(total_print_count))
+        file1.close
 
     file.close
