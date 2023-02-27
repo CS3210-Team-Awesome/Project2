@@ -64,6 +64,15 @@ with open(input_file) as file:
         #checks if there is a conditional word
         for word in conditional_words:
             if string_whithout_whitespace.startswith(word):
+                if string_whithout_whitespace.startswith("def"):
+                    if not string_whithout_whitespace.startswith("def "):
+                        fix = string_whithout_whitespace[:3] + " "
+                        rest = string_whithout_whitespace[3:].split(" ")
+                        for i in rest:
+                            fix = fix + i
+                        print(fix)
+                    else:
+                        print(True)
                 stack.append(number_of_spaces + 4)
                 tabCheck = 1
                 break
