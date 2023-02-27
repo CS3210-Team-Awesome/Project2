@@ -86,7 +86,15 @@ with open(input_file) as file:
     print_5 = str_file.count("print (f\"")
     print_6 = str_file.count("print ( f\"")
 
-    total_print_count = print_1 + print_2 + print_3 + print_4 + print_5 + print_6
+    print_1_2 = str_file.count("print(\'")
+    print_2_2 = str_file.count("print (\'")
+    print_3_2 = str_file.count("print(f\'")
+    print_4_2 = str_file.count("print( f\'")
+    print_5_2 = str_file.count("print (f\'")
+    print_6_2 = str_file.count("print ( f\'")
+
+    total_print_count = (print_1 + print_2 + print_3 + print_4 + print_5 + print_6 + 
+                        print_1_2 + print_2_2 + print_3_2 + print_4_2 + print_5_2 + print_6_2)
 
     print("Total number of 'print' statements: " + str(total_print_count))
     # 4.) Print to a text file the original input program, the updated input program, and the number of time keyword “print” is used.
@@ -96,6 +104,9 @@ with open(input_file) as file:
         "\n\n# FIXED CODE: \n" + fixed_code + 
         "\n\n# Total number of 'print' statements: " + str(total_print_count))
     
+    print("Original file: ", type(original_file))
+    print("Fixed code: ", type(fixed_code))
+
     """ This segment of code saves a .txt copy of the input file """
     name = str(input_file)
     txt_file = name[:-3]
