@@ -33,7 +33,7 @@ with open(input_file) as file:
     statement_list = read
     number_of_spaces = 0
     stack = [0]
-    conditional_words = ["for ", "if ", "while ", "else ", "def", "elif "]
+    conditional_words = ["for ", "if ", "while ", "else ", "def ", "elif "]
 
     # traverse the statement list
     for it in statement_list:
@@ -47,10 +47,6 @@ with open(input_file) as file:
         if number_of_spaces < stack[len(stack) - 1]:
             if not tabCheck == 1:
                 while number_of_spaces < stack[len(stack) - 1]:
-                    # not in a function and needs to be
-                    if string_whithout_whitespace.startswith("def") and len(stack) == 2:
-                        number_of_spaces = 4
-                        break
                     stack.pop()
                 statement_list[i] = (" " * stack[len(stack) - 1]) + it.lstrip()
 
@@ -68,24 +64,58 @@ with open(input_file) as file:
         #checks if there is a conditional word
         for word in conditional_words:
             if string_whithout_whitespace.startswith(word):
-                if string_whithout_whitespace.startswith("def"):
-                    if not string_whithout_whitespace.startswith("def "):
-                        fix = string_whithout_whitespace[:3] + " "
-                        rest = string_whithout_whitespace[3:].split(" ")
-                        for i in rest:
-                            fix = fix + i
-                        print(fix)
-                    else:
-                        print(True)
                 stack.append(number_of_spaces + 4)
                 tabCheck = 1
                 break
+        
         i += 1 #updates counter
 
     fixed_code = statement_list
     print(statement_list)
 
     # TODO 2.) Check to make sure all the function headers are syntactically correct. If not, fix it.
+
+    jakl = []
+    asd = 0
+    for lol in fixed_code:
+        line = lol
+        if line.startswith("def"):
+            if not line.startswith("def "):
+                fix = line[:3] + " "
+                rest = line[3:].split(" ")
+                for y in rest:
+                    fix = fix + y
+                    if y.endswith(","):
+                        fix = fix + " "
+                line = fix
+
+            test = ""
+            word = ""
+            thing = ""
+            for t in line:
+                if t == "(":
+                    word = word + t
+                    test = test + word
+                    word = ""
+                elif t.isspace():
+                    test = test + word + t
+                    word = ""
+                else:
+                    word = word + t
+
+                if line.endswith(word + "\n") and word != "":
+                    if word.endswith("):") == False:
+                        if word.endswith(")"):
+                            word = word[:len(word)] + ":"
+                        elif word.endswith(":"):
+                            word = word[:len(word) - 1] + "):"
+
+                    test += word + "\n"
+                    jakl.append(test)
+        else:
+            jakl.append(lol)
+    fixed_code = jakl
+
     # 3.) Count how many time the keyword “print” is used as keywords in the input program.
     str_file = str(read)
     print_1 = str_file.count("print(\"")
