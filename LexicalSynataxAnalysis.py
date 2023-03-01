@@ -45,17 +45,6 @@ with open(input_file, encoding="utf8") as file:
         string_whithout_whitespace = it.lstrip() # ignore tab before to check statement
         number_of_spaces = len(it) - len(string_whithout_whitespace)
 
-        # if there is no indent and needs to be one
-        if number_of_spaces < stack[len(stack) - 1]:
-            if not tabCheck == 1:
-                while number_of_spaces < stack[len(stack) - 1]:
-                    # not in a function and needs to be
-                    if string_whithout_whitespace.startswith("def") and len(stack) == 2:
-                        number_of_spaces = 4
-                        break
-                    stack.pop()
-                statement_list[i] = (" " * stack[len(stack) - 1]) + it.lstrip()
-
         # if there is a missing, expected indent because of a conditional word
         if tabCheck == 1:
             if not number_of_spaces == stack[len(stack) - 1]:
