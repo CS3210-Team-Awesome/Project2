@@ -33,7 +33,8 @@ with open(input_file) as file:
     statement_list = read
     number_of_spaces = 0
     stack = [0]
-    conditional_words = ["for ", "if ", "while ", "else ", "def ", "elif "]
+    conditional_words = ["for ", "if ", "while ", "else ", "def ", "elif ", "try ", "except ", 
+                         "for", "if", "while", "else", "def", "elif", "try", "except"]
 
     # traverse the statement list
     for it in statement_list:
@@ -47,6 +48,10 @@ with open(input_file) as file:
         if number_of_spaces < stack[len(stack) - 1]:
             if not tabCheck == 1:
                 while number_of_spaces < stack[len(stack) - 1]:
+                    # not in a function and needs to be
+                    if string_whithout_whitespace.startswith("def") and len(stack) == 2:
+                        number_of_spaces = 4
+                        break
                     stack.pop()
                 statement_list[i] = (" " * stack[len(stack) - 1]) + it.lstrip()
 
@@ -78,7 +83,7 @@ with open(input_file) as file:
     statement_list_2 = []
     for current_list in fixed_code:
         line = current_list
-        if line.startswith("def"):
+        if line.lstrip().startswith("def"):
             if not line.startswith("def "):
                 fix = line[:3] + " "
                 remainder = line[3:].split(" ")
