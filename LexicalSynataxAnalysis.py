@@ -1,16 +1,17 @@
 """
-TEAM AWESOME
+TEAM AWESOM(EST)
 02/28/2023
 
+GITHUB LINK: https://github.com/CS3210-Team-Awesome/Project2/tree/main
 ----------------
 Team Members:
 ----------------
-Sarah Barnes
-Samuel Han
-Jessica Gardner
-Jada Sachetti
-Erika Sadsad
-Adriana Miller
+Sarah Barnes (sarahbarnes1994)
+Samuel Han (samhanahmas)
+Jessica Gardner (babybeans)
+Jada Sachetti (jsachetti)
+Erika Sadsad (krisellecodes)
+Adriana Miller (millerac38)
 ----------------
 PROJECT 2: LEXICAL AND SYNTAX ANALYSIS
 
