@@ -22,9 +22,10 @@ following tasks:
 input_file = input("Enter a python file (path) to test: ")
 print("You entered: " + input_file)
 
-with open(input_file) as file:
+with open(input_file, encoding="utf8") as file:
     print("Reading file...")
     read = file.readlines()
+    print('test')
 
     # print(read)
     # TODO 1.) Check to make sure all the indentation in the input program is used correctly. If not, fix it. 
@@ -33,8 +34,8 @@ with open(input_file) as file:
     statement_list = read
     number_of_spaces = 0
     stack = [0]
-    conditional_words = ["for ", "if ", "while ", "else ", "def ", "elif ", "try ", "except ", 
-                         "for", "if", "while", "else", "def", "elif", "try", "except"]
+    conditional_words = ["for", "if", "while", "else", "def", "elif", "try", "except",
+                         "for ", "if ", "while ", "else ", "def ", "elif ", "try ", "except "]
 
     # traverse the statement list
     for it in statement_list:
