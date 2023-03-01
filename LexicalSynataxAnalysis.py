@@ -50,6 +50,7 @@ with open(input_file, encoding="utf8") as file:
             if not string_whithout_whitespace.startswith('def'):
                 if not number_of_spaces == stack[len(stack) - 1]:
                     statement_list[i] = (" " * stack[len(stack) - 1]) + it.lstrip()
+                    number_of_spaces = stack[len(stack) - 1]
                 tabCheck = 0
 
         # if there is an indent that is unexpected not after conditional word
