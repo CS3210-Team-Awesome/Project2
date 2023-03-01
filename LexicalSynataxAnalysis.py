@@ -26,7 +26,7 @@ print("You entered: " + input_file)
 with open(input_file, encoding="utf8") as file:
     print("Reading file...")
     read = file.readlines()
-    print('test')
+    #print('test')
 
     # print(read)
     # TODO 1.) Check to make sure all the indentation in the input program is used correctly. If not, fix it. 
@@ -69,7 +69,7 @@ with open(input_file, encoding="utf8") as file:
         i += 1 #updates counter
 
     fixed_code = statement_list
-    print(statement_list)
+    #print(statement_list)
 
     # TODO 2.) Check to make sure all the function headers are syntactically correct. If not, fix it.
 
@@ -137,7 +137,7 @@ with open(input_file, encoding="utf8") as file:
     """ This segment of code saves a .txt copy of the input file """
     name = str(input_file)
     txt_file = name[:-3]
-    print(txt_file)
+    #print(txt_file)
     txt_file = txt_file + '.txt'
 
     with open(txt_file, "w") as file1, open(input_file,'r') as file2:
