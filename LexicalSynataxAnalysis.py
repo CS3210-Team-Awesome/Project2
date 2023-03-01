@@ -36,7 +36,7 @@ with open(input_file, encoding="utf8") as file:
     stack = [0]
     conditional_words = ["for", "if", "while", "else", "def", "elif", "try", "except",
                          "for ", "if ", "while ", "else ", "def ", "elif ", "try ", "except "]
-
+    
     # traverse the statement list
     for it in statement_list:
         if it == "\n":
@@ -46,10 +46,11 @@ with open(input_file, encoding="utf8") as file:
         number_of_spaces = len(it) - len(string_whithout_whitespace)
 
         # if there is a missing, expected indent because of a conditional word
-        if tabCheck == 1:
-            if not number_of_spaces == stack[len(stack) - 1]:
-                statement_list[i] = (" " * stack[len(stack) - 1]) + it.lstrip()
-            tabCheck = 0    
+        if tabCheck == 1 or number_of_spaces == 0:
+            if not string_whithout_whitespace.startswith('def'):
+                if not number_of_spaces == stack[len(stack) - 1]:
+                    statement_list[i] = (" " * stack[len(stack) - 1]) + it.lstrip()
+                tabCheck = 0
 
         # if there is an indent that is unexpected not after conditional word
         elif number_of_spaces > stack[len(stack) - 1]:
